@@ -22,12 +22,13 @@ export const getBusinesses = async (): Promise<Business[]> => {
     const backendData = response.data.data;
     if (Array.isArray(backendData) && backendData.length > 0) {
       return backendData.map((item) => {
-        const fallback = fallbackBusinesses.find((f) => f.id === item.id) || {};
+        const fallback: Partial<Business> =
+          fallbackBusinesses.find((f) => f.id === item.id) || {};
         return {
           ...fallback,
           ...item,
           status: item.status || fallback.status || 'Coming Soon',
-        };
+        } as Business;
       });
     }
     return fallbackBusinesses;
