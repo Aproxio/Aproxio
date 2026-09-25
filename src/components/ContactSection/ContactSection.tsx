@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+/*
 import { submitContactInquiry } from '../../services/contactService';
 import { toast } from 'react-toastify';
 
@@ -9,8 +10,69 @@ interface FormFields {
   subject: string;
   message: string;
 }
+*/
 
 const ContactSection: React.FC = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const [isUserInteracting, setIsUserInteracting] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setIsVisible(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!containerRef.current || !overlayRef.current) return;
+    setIsUserInteracting(true);
+
+    const rect = containerRef.current.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    overlayRef.current.style.transition = 'transform 0.12s ease-out';
+    overlayRef.current.style.transform = `translate(${Math.floor(mouseX - 450)}px, ${Math.floor(mouseY - 250)}px)`;
+  };
+
+  const handleMouseEnter = () => {
+    setIsUserInteracting(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsUserInteracting(false);
+    if (overlayRef.current) {
+      overlayRef.current.style.transition = 'transform 0.9s ease-out';
+      overlayRef.current.style.transform = 'translate(15%, 80px)';
+    }
+  };
+
+  useEffect(() => {
+    if (!containerRef.current || !overlayRef.current) return;
+
+    overlayRef.current.style.transform = 'translate(15%, 80px)';
+
+    const ambientWaypoints = [
+      { x: 200, y: 60 },
+      { x: 500, y: 40 },
+      { x: 300, y: 90 },
+      { x: 150, y: 70 }
+    ];
+
+    let pointIndex = 0;
+    const interval = setInterval(() => {
+      if (!isUserInteracting && overlayRef.current) {
+        const point = ambientWaypoints[pointIndex];
+        overlayRef.current.style.transition = 'transform 2.2s ease-in-out';
+        overlayRef.current.style.transform = `translate(${point.x}px, ${point.y}px)`;
+        pointIndex = (pointIndex + 1) % ambientWaypoints.length;
+      }
+    }, 3200);
+
+    return () => clearInterval(interval);
+  }, [isUserInteracting]);
+
+  /*
   const [formData, setFormData] = useState<FormFields>({
     name: '',
     email: '',
@@ -57,11 +119,26 @@ const ContactSection: React.FC = () => {
       setLoading(false);
     }
   };
+  */
 
   return (
     <div className="w-full">
-      {/* Header Section */}
-      <section className="pt-12 pb-16 border-b border-hairline">
+      {/* Header Section with Interactive Hover Grid */}
+      <section
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center overflow-hidden pt-12 pb-16 border-b border-hairline select-none"
+      >
+        {/* Background Interactive Square Grid */}
+        <div className="grid_bg"></div>
+
+        {/* Radial Spotlight Mask */}
+        <div ref={overlayRef} className="overlay"></div>
+
+        {/* Header Content */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         <div className="flex items-center gap-space-sm mb-6">
           <span className="w-2 h-2 bg-primary"></span>
           <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">Direct Dispatches</span>
@@ -69,139 +146,54 @@ const ContactSection: React.FC = () => {
           <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-primary">Contact</span>
         </div>
 
-        <h1 className="font-display text-display-mobile md:text-display text-text-primary tracking-tight font-semibold leading-[1.05] max-w-5xl mb-6">
-          Get in touch with<br />
-          Aproxio leadership.
-        </h1>
+        <div
+          className={`transition-all duration-700 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          <h1 className="font-display text-display-mobile md:text-display text-text-primary tracking-tight font-semibold leading-[1.05] max-w-5xl mb-6">
+            Get in touch with<br />
+            Aproxio leadership.
+          </h1>
+        </div>
 
-        <p className="font-body-lg text-body-lg text-text-secondary max-w-3xl leading-relaxed">
+        <p
+          className={`font-body-lg text-body-lg text-text-secondary max-w-3xl leading-relaxed transition-all duration-700 delay-150 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
           For strategic commercial inquiries, institutional disclosures, or media communications, contact our corresponding desks.
         </p>
-      </section>
-
-      {/* Main Grid: Form + Office Details */}
-      <section className="py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
-          {/* Contact Form */}
-          <div className="lg:col-span-7 bg-surface-muted p-8 border border-hairline">
-            <h2 className="font-headline-sm text-2xl font-medium text-text-primary mb-2">
-              Send an Official Dispatch
-            </h2>
-            <p className="text-sm text-text-secondary mb-8">
-              All communications are logged and routed directly to the designated department team.
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="font-label-sm text-xs uppercase text-text-tertiary block mb-2">Your Name *</label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Enter full name"
-                    className="w-full px-4 py-3 bg-canvas border border-hairline text-sm text-text-primary focus:outline-none focus:border-text-primary"
-                  />
-                </div>
-
-                <div>
-                  <label className="font-label-sm text-xs uppercase text-text-tertiary block mb-2">Email Address *</label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="corporate@domain.com"
-                    className="w-full px-4 py-3 bg-canvas border border-hairline text-sm text-text-primary focus:outline-none focus:border-text-primary"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="font-label-sm text-xs uppercase text-text-tertiary block mb-2">Designated Department</label>
-                <select
-                  value={formData.department}
-                  onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                  className="w-full px-4 py-3 bg-canvas border border-hairline text-sm text-text-primary focus:outline-none focus:border-text-primary"
-                >
-                  {departments.map((dept, idx) => (
-                    <option key={idx} value={dept}>{dept}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="font-label-sm text-xs uppercase text-text-tertiary block mb-2">Subject</label>
-                <input
-                  type="text"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  placeholder="Mandate / Inquiry Reference"
-                  className="w-full px-4 py-3 bg-canvas border border-hairline text-sm text-text-primary focus:outline-none focus:border-text-primary"
-                />
-              </div>
-
-              <div>
-                <label className="font-label-sm text-xs uppercase text-text-tertiary block mb-2">Dispatch Content *</label>
-                <textarea
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Detail your inquiry or proposal with clarity and concise metrics..."
-                  className="w-full px-4 py-3 bg-canvas border border-hairline text-sm text-text-primary focus:outline-none focus:border-text-primary"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="px-8 py-3.5 bg-text-primary text-canvas font-label-md text-sm uppercase tracking-wider hover:bg-neutral-800 transition-colors disabled:opacity-50 cursor-pointer"
-              >
-                {loading ? 'Transmitting Dispatch...' : 'Transmit Dispatch'}
-              </button>
-            </form>
-          </div>
-
-          {/* Directory & Head Office */}
-          <div className="lg:col-span-5 space-y-8">
-            {/* Headquarters Card */}
-            <div className="p-8 border border-hairline bg-surface-muted">
-              <span className="font-label-sm text-xs uppercase text-text-tertiary tracking-wider block mb-2">Corporate Headquarters</span>
-              <h3 className="font-title text-xl font-medium text-text-primary mb-3">
-                Aproxio Towers
-              </h3>
-              <p className="text-sm text-text-secondary leading-relaxed mb-4">
-                Aproxio Horizon Towers, Sector 44,<br />
-                Gurugram, NCR 122003, India
-              </p>
-              <div className="pt-4 border-t border-hairline text-xs text-text-secondary space-y-1">
-                <p>Phone: +91 124 415 7700</p>
-                <p>Email: contact@aproxio.com</p>
-              </div>
-            </div>
-
-            {/* Department Desks */}
-            <div className="space-y-4">
-              <div className="p-4 border border-hairline bg-canvas">
-                <h4 className="font-label-md text-sm font-medium text-text-primary">Press & Media Desk</h4>
-                <p className="text-xs text-text-secondary mt-1">press@aproxio.com</p>
-              </div>
-              <div className="p-4 border border-hairline bg-canvas">
-                <h4 className="font-label-md text-sm font-medium text-text-primary">Investor Relations Desk</h4>
-                <p className="text-xs text-text-secondary mt-1">ir@aproxio.com</p>
-              </div>
-              <div className="p-4 border border-hairline bg-canvas">
-                <h4 className="font-label-md text-sm font-medium text-text-primary">Talent Mandate Admissions</h4>
-                <p className="text-xs text-text-secondary mt-1">careers@aproxio.com</p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
+
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+        {/* Main Grid: Form + Office Details */}
+        <section className="py-24 sm:py-32 flex flex-col items-center justify-center text-center">
+          <p className="font-label-sm text-sm uppercase tracking-[0.2em] text-text-tertiary mb-6">
+            Get In Touch
+          </p>
+          <div className="flex flex-col items-center gap-1 sm:gap-2">
+            <a 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=founder.aproxio@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-display text-2xl sm:text-4xl md:text-5xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1"
+            >
+              founder.aproxio@gmail.com
+            </a>
+            <a 
+              href="tel:+919592850867"
+              className="font-display text-xl sm:text-3xl md:text-4xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1"
+            >
+              +91 95928 50867
+            </a>
+          </div>
+          <p className="mt-10 font-body-lg text-text-secondary max-w-xl mx-auto leading-relaxed">
+            We are always looking for unexpected opportunities and visionary founders. Drop us an email or give us a call.
+          </p>
+        </section>
+      </div>
     </div>
   );
 };

@@ -4,9 +4,7 @@ import CareersSection from '../components/CareersSection/CareersSection';
 const CareersPage: React.FC = () => {
   return (
     <main className="w-full bg-canvas min-h-screen">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-        <CareersSection />
-      </div>
+      <CareersSection />
     </main>
   );
 };

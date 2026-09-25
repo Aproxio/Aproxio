@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
     { label: 'Culture', path: '/culture' },
     { label: 'Careers', path: '/careers' },
     // { label: 'Investors', path: '/investors' },
-    { label: 'Impact', path: '/impact' },
+    // { label: 'Impact', path: '/impact' },
     { label: 'Contact', path: '/contact' }
   ];
 

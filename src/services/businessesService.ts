@@ -21,13 +21,18 @@ export const getBusinesses = async (): Promise<Business[]> => {
     const response = await api.get<ApiResponse<Business[]>>('/businesses');
     const backendData = response.data.data;
     if (Array.isArray(backendData) && backendData.length > 0) {
-      return backendData.map((item) => {
-        const fallback: Partial<Business> =
-          fallbackBusinesses.find((f) => f.id === item.id) || {};
+      return backendData.map(item => {
+        const fallback = fallbackBusinesses.find(f => f.id === item.id);
         return {
-          ...fallback,
+          ...(fallback || {}),
           ...item,
-          status: item.status || fallback.status || 'Coming Soon',
+          status: item.status || fallback?.status || "Coming Soon",
+          codename: fallback?.codename,
+          launchWindow: fallback?.launchWindow,
+          clearanceLevel: fallback?.clearanceLevel,
+          classifiedSpec: fallback?.classifiedSpec,
+          telemetry: fallback?.telemetry,
+          dossier: fallback?.dossier,
         } as Business;
       });
     }

@@ -3,10 +3,8 @@ import ImpactSection from '../components/ImpactSection/ImpactSection';
 
 const ImpactPage: React.FC = () => {
   return (
-    <main className="w-full pt-16 bg-canvas min-h-screen">
-      <div className="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin">
-        <ImpactSection />
-      </div>
+    <main className="w-full bg-canvas min-h-screen">
+      <ImpactSection />
     </main>
   );
 };

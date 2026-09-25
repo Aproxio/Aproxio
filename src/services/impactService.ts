@@ -17,45 +17,52 @@ export interface ImpactData {
 export const fallbackImpact: ImpactData = {
   metrics: [
     {
+      value: "100%*",
+      label: "Digital Product Traceability",
+      detail:
+        "Product, variant, seller, shipment and return information can be tracked throughout the Aproxio commerce journey."
+    },
+    {
+      value: "50+",
+      label: "Fashion Sellers & Brands",
+      detail:
+        "A marketplace ecosystem designed to help independent sellers, emerging brands and fashion businesses reach customers digitally."
+    },
+    {
+      value: "10K+",
+      label: "Clothing Products",
+      detail:
+        "A clothing-focused catalog covering products, sizes, colors, variants, inventory and seller information."
+    },
+    {
       value: "100%",
-      label: "EV Fleet Target by 2030",
-      detail: "Over 45,000 active electric delivery vehicles deployed across 20+ metro hubs."
-    },
-    {
-      value: "250M+",
-      label: "Plastic Free Deliveries",
-      detail: "100% recyclable, biodegradable paper packaging and compostable bag options."
-    },
-    {
-      value: "15M+",
-      label: "Meals Distributed via Aproxio Nourish",
-      detail: "Nourishing underprivileged communities and partner families across regional fulfillment networks."
-    },
-    {
-      value: "0",
-      label: "Net Landfill Waste in Warehouses",
-      detail: "Circular inventory recycling and bio-composting across all primary fulfillment hubs."
+      label: "Return & Exchange Visibility",
+      detail:
+        "Structured return and exchange workflows with eligibility checks, reverse logistics, quality checks and refund or replacement tracking."
     }
   ],
+
   initiatives: [
     {
-      title: "Decarbonizing Logistics Infrastructure",
-      description: "Piloting CleanGrid solar battery swapping stations that recharge autonomous couriers and EV fleets in under 90 seconds.",
-      tag: "Environment"
+      title: "Building a Circular Fashion Ecosystem",
+      description:
+        "Helping extend the lifecycle of clothing through structured returns, quality checks, resale opportunities, recycling and responsible disposal.",
+      tag: "Circular Fashion"
     },
     {
-      title: "Direct Producer & Cooperative Sourcing",
-      description: "Direct tie-ups with 30,000+ local agricultural producers, eliminating middlemen and guaranteeing fair minimum prices.",
-      tag: "Producers"
+      title: "Supporting Fashion Sellers & Emerging Brands",
+      description:
+        "Creating digital opportunities for independent sellers, local businesses and emerging fashion brands to reach customers through a unified marketplace.",
+      tag: "Inclusive Economy"
     },
     {
-      title: "Fleet Operator & Partner Welfare",
-      description: "Comprehensive health insurance, emergency roadside assistance, and continuing education scholarships for families.",
-      tag: "Community"
+      title: "Smarter & More Responsible Logistics",
+      description:
+        "Working towards efficient deliveries, optimized shipments and reduced packaging waste through better logistics and fulfillment processes.",
+      tag: "Sustainable Logistics"
     }
   ]
 };
-
 export const getImpactData = async (): Promise<ImpactData> => {
   try {
     const response = await api.get<ApiResponse<ImpactData>>('/impact');

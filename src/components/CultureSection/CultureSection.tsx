@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 interface Principle {
@@ -8,6 +8,65 @@ interface Principle {
 }
 
 const CultureSection: React.FC = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const [isUserInteracting, setIsUserInteracting] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setIsVisible(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!containerRef.current || !overlayRef.current) return;
+    setIsUserInteracting(true);
+
+    const rect = containerRef.current.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    overlayRef.current.style.transition = 'transform 0.12s ease-out';
+    overlayRef.current.style.transform = `translate(${Math.floor(mouseX - 450)}px, ${Math.floor(mouseY - 250)}px)`;
+  };
+
+  const handleMouseEnter = () => {
+    setIsUserInteracting(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsUserInteracting(false);
+    if (overlayRef.current) {
+      overlayRef.current.style.transition = 'transform 0.9s ease-out';
+      overlayRef.current.style.transform = 'translate(15%, 80px)';
+    }
+  };
+
+  useEffect(() => {
+    if (!containerRef.current || !overlayRef.current) return;
+
+    overlayRef.current.style.transform = 'translate(15%, 80px)';
+
+    const ambientWaypoints = [
+      { x: 200, y: 60 },
+      { x: 500, y: 40 },
+      { x: 300, y: 90 },
+      { x: 150, y: 70 }
+    ];
+
+    let pointIndex = 0;
+    const interval = setInterval(() => {
+      if (!isUserInteracting && overlayRef.current) {
+        const point = ambientWaypoints[pointIndex];
+        overlayRef.current.style.transition = 'transform 2.2s ease-in-out';
+        overlayRef.current.style.transform = `translate(${point.x}px, ${point.y}px)`;
+        pointIndex = (pointIndex + 1) % ambientWaypoints.length;
+      }
+    }, 3200);
+
+    return () => clearInterval(interval);
+  }, [isUserInteracting]);
+
   const principles: Principle[] = [
     {
       num: '01',
@@ -53,8 +112,21 @@ const CultureSection: React.FC = () => {
   return (
     <div className="w-full">
       {/* Header */}
-      <section className="pt-8 pb-16 lg:pt-10 lg:pb-20 border-b border-hairline">
-        <div className="flex items-center gap-2 mb-6">
+      <section
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center overflow-hidden pt-12 pb-16 border-b border-hairline select-none"
+      >
+        {/* Background Interactive Square Grid */}
+        <div className="grid_bg"></div>
+
+        {/* Radial Spotlight Mask */}
+        <div ref={overlayRef} className="overlay"></div>
+
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="flex items-center gap-2 mb-6">
           <span className="w-2 h-2 bg-primary" />
           <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">
             Company
@@ -65,18 +137,30 @@ const CultureSection: React.FC = () => {
           </span>
         </div>
 
-        <h1 className="font-display text-display-mobile md:text-display text-text-primary tracking-tight font-semibold leading-[1.05] max-w-4xl">
-          How we work together.
-        </h1>
+        <div
+          className={`transition-all duration-700 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          <h1 className="font-display text-display-mobile md:text-display text-text-primary tracking-tight font-semibold leading-[1.05] max-w-4xl">
+            How we work together.
+          </h1>
+        </div>
 
-        <p className="mt-6 max-w-2xl font-body-lg text-body-lg text-text-secondary leading-relaxed">
+        <p
+          className={`mt-6 max-w-2xl font-body-lg text-body-lg text-text-secondary leading-relaxed transition-all duration-700 delay-150 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
           We build products. Culture is how we do that well — small teams, visible decisions,
           and a high bar for quality so every business under Aproxio can grow with trust.
-        </p>
+          </p>
+        </div>
       </section>
 
-      {/* Principles */}
-      <section className="py-16 lg:py-20 border-b border-hairline">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+        {/* Principles */}
+        <section className="py-16 lg:py-20 border-b border-hairline">
         <div className="mb-10">
           <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">
             Principles
@@ -179,6 +263,7 @@ const CultureSection: React.FC = () => {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 };
