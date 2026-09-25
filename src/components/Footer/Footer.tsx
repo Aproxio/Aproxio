@@ -81,11 +81,11 @@ const Footer: React.FC = () => {
                   Careers
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/impact" className="hover:text-text-primary transition-colors">
                   Impact
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
