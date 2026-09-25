@@ -32,12 +32,23 @@ const Hero: React.FC = () => {
     setIsUserInteracting(false);
     if (overlayRef.current) {
       overlayRef.current.style.transition = 'transform 0.9s ease-out';
-      overlayRef.current.style.transform = 'translate(15%, 120px)';
+      // Let CSS media queries own the resting position on compact screens
+      if (window.matchMedia('(max-width: 900px)').matches) {
+        overlayRef.current.style.transform = '';
+      } else {
+        overlayRef.current.style.transform = 'translate(15%, 120px)';
+      }
     }
   };
 
   useEffect(() => {
     if (!containerRef.current || !overlayRef.current) return;
+
+    const compact = window.matchMedia('(max-width: 900px)');
+    if (compact.matches) {
+      overlayRef.current.style.transform = '';
+      return;
+    }
 
     overlayRef.current.style.transform = 'translate(15%, 120px)';
 
@@ -75,7 +86,7 @@ const Hero: React.FC = () => {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-between overflow-hidden bg-canvas pt-10 pb-12"
+      className="relative w-full overflow-hidden bg-canvas pt-6 sm:pt-10 pb-10 sm:pb-14 lg:pb-20"
     >
       <div
         className="absolute inset-0 pointer-events-none z-0"
@@ -89,9 +100,9 @@ const Hero: React.FC = () => {
       <div className="grid_bg" />
       <div ref={overlayRef} className="overlay" />
 
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 flex-1 flex flex-col justify-between">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         <div
-          className={`pt-14 sm:pt-20 lg:pt-28 max-w-4xl transition-all duration-700 ease-out ${
+          className={`pt-4 sm:pt-14 lg:pt-20 max-w-4xl transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
@@ -99,11 +110,11 @@ const Hero: React.FC = () => {
             Our businesses
           </p>
 
-          <h1 className="font-display text-[48px] sm:text-[64px] md:text-[72px] xl:text-[80px] font-semibold leading-[0.98] tracking-tight text-text-primary">
+          <h1 className="font-display text-[40px] sm:text-[64px] md:text-[72px] xl:text-[80px] font-semibold leading-[0.98] tracking-tight text-text-primary">
             Aproxio
           </h1>
 
-          <p className="mt-5 sm:mt-6 text-[26px] sm:text-[34px] md:text-[40px] font-light leading-[1.15] tracking-tight text-text-primary max-w-3xl">
+          <p className="mt-4 sm:mt-6 text-[22px] sm:text-[34px] md:text-[40px] font-light leading-[1.15] tracking-tight text-text-primary max-w-3xl">
             Building products that endure.
             <br />
             Chase the unexpected.
@@ -140,7 +151,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div
+        {/* <div
           className={`pt-16 pb-4 flex items-end justify-between gap-8 transition-all duration-700 delay-500 ease-out ${
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}
@@ -159,7 +170,7 @@ const Hero: React.FC = () => {
           <p className="hidden sm:block font-mono text-[11px] tracking-wider uppercase text-text-tertiary">
             Gurugram · Bengaluru · New Delhi
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

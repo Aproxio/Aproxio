@@ -39,13 +39,22 @@ const ImpactSection: React.FC = () => {
     setIsUserInteracting(false);
     if (overlayRef.current) {
       overlayRef.current.style.transition = 'transform 0.9s ease-out';
-      overlayRef.current.style.transform = 'translate(15%, 80px)';
+      if (window.matchMedia('(max-width: 900px)').matches) {
+        overlayRef.current.style.transform = '';
+      } else {
+        overlayRef.current.style.transform = 'translate(15%, 80px)';
+      }
     }
   };
 
   // Ambient gentle floating motion when not actively hovering
   useEffect(() => {
     if (!containerRef.current || !overlayRef.current) return;
+
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      overlayRef.current.style.transform = '';
+      return;
+    }
 
     // Initial position
     overlayRef.current.style.transform = 'translate(15%, 80px)';
@@ -92,7 +101,7 @@ const ImpactSection: React.FC = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center overflow-hidden pt-12 pb-16 border-b border-hairline select-none"
+        className="relative overflow-hidden pt-8 pb-12 sm:pt-12 sm:pb-16 md:min-h-[calc(100dvh-5rem)] md:flex md:flex-col md:justify-center border-b border-hairline select-none"
       >
         {/* Background Interactive Square Grid */}
         <div className="grid_bg"></div>

@@ -88,7 +88,7 @@ const Businesses: React.FC = () => {
             01 — Product
           </p>
 
-          <h3 className="text-[42px] sm:text-[52px] lg:text-[56px] font-semibold tracking-tight leading-[0.95] capitalize text-text-primary">
+          <h3 className="text-[36px] sm:text-[52px] lg:text-[56px] font-semibold tracking-tight leading-[0.95] capitalize text-text-primary">
             aproxio
           </h3>
 
@@ -101,7 +101,7 @@ const Businesses: React.FC = () => {
             reliability, and a standard we will carry into every product we launch next.
           </p>
 
-          <div className="mt-8 grid grid-cols-3 gap-4 max-w-md border-t border-hairline pt-6">
+          <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4 max-w-md border-t border-hairline pt-6">
             {[
               { label: 'Type', value: 'Product' },
               { label: 'Status', value: 'Soon' },

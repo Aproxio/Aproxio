@@ -42,9 +42,9 @@ const Footer: React.FC = () => {
             <p className="mt-5 max-w-sm font-body-md text-[14px] text-text-secondary leading-relaxed">
               Building products that endure — under one home called Aproxio.
             </p>
-            <p className="mt-4 font-mono text-[11px] tracking-wider uppercase text-text-tertiary">
+            {/* <p className="mt-4 font-mono text-[11px] tracking-wider uppercase text-text-tertiary">
               Gurugram · Bengaluru · New Delhi
-            </p>
+            </p> */}
           </div>
 
           {/* Businesses */}

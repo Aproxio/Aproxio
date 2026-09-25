@@ -88,10 +88,19 @@
 
 @media (max-width: 900px) {
   .overlay {
-    width: 700px;
-    height: 500px;
-    transform: translate(-10%, 100px);
-    background: radial-gradient(49.47% 35% at 48.91% 45%, rgba(250, 248, 245, 0) 0% 25%, rgba(250, 248, 245, 0.94) 70%, #FAF8F5 100%);
+    width: min(100vw, 520px);
+    height: min(70vh, 380px);
+    transform: translate(8%, 48px);
+    background: radial-gradient(49.47% 45% at 48.91% 40%, rgba(250, 248, 245, 0) 0% 22%, rgba(250, 248, 245, 0.94) 70%, #FAF8F5 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .overlay {
+    width: min(100vw, 320px);
+    height: min(55vh, 280px);
+    transform: translate(12%, 20px);
+    background: radial-gradient(50% 50% at 45% 35%, rgba(250, 248, 245, 0) 0% 20%, rgba(250, 248, 245, 0.92) 65%, #FAF8F5 100%);
   }
 }
 

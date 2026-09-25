@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const NotFoundPage: React.FC = () => {
   return (
-    <main className="w-full pt-16 bg-canvas min-h-screen flex items-center justify-center">
-      <div className="max-w-[600px] mx-auto px-margin-mobile text-center py-24">
+    <main className="w-full bg-canvas min-h-[calc(100dvh-5rem)] flex items-center justify-center">
+      <div className="max-w-[600px] mx-auto px-6 text-center py-16 sm:py-24">
         <span className="font-display text-7xl font-bold text-text-primary tracking-tighter">404</span>
         <h1 className="font-headline-md text-3xl font-medium text-text-primary mt-4 mb-2">
           Dispatch Not Found

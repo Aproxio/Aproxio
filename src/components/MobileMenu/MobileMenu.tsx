@@ -15,7 +15,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems, isAc
   return (
     <div className="fixed inset-0 z-50 md:hidden flex flex-col bg-canvas">
       {/* Drawer Header */}
-      <div className="h-16 px-margin-mobile border-b border-hairline-subtle flex items-center justify-between">
+      <div className="h-20 px-6 border-b border-hairline-subtle flex items-center justify-between">
         <span className="font-title text-title font-medium text-text-primary tracking-tight">Menu</span>
         <button 
           onClick={onClose}
@@ -27,7 +27,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems, isAc
       </div>
 
       {/* Drawer Links */}
-      <div className="flex-1 flex flex-col px-margin-mobile py-8 space-y-6 overflow-y-auto">
+      <div className="flex-1 flex flex-col px-6 py-8 space-y-6 overflow-y-auto">
         {navItems.map((item) => {
           const active = isActive(item.path);
           return (
@@ -48,13 +48,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navItems, isAc
       </div>
 
       {/* Drawer Footer */}
-      <div className="p-margin-mobile border-t border-hairline-subtle bg-surface-muted">
+      <div className="px-6 py-5 border-t border-hairline-subtle bg-surface-muted">
         <p className="font-label-sm text-label-sm uppercase tracking-wider text-text-tertiary">
-          Aproxio Institutional Group
+          Aproxio
         </p>
-        <p className="text-xs text-text-secondary mt-1">
+        {/* <p className="text-xs text-text-secondary mt-1">
           Gurugram • Bengaluru • New Delhi
-        </p>
+        </p> */}
       </div>
     </div>
   );
