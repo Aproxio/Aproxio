@@ -1,61 +1,96 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import founderVisual from '../../images/aproxio-founder-panel.jpg';
 
 const FounderNote: React.FC = () => {
   return (
     <section className="py-16 lg:py-24 border-t border-hairline">
-      <div className="grid   gap-12 items-center">
-        
-        {/* Founder Portrait & Caption */}
-        {/* <div className="lg:col-span-5 flex flex-col group cursor-pointer">
-          <div className="aspect-[4/5] bg-surface-container overflow-hidden border border-hairline group-hover:border-text-primary transition-colors relative shadow-sm">
-            <img 
-              className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-108 transition-all duration-700 ease-out" 
-              alt="Founder & Group CEO" 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-            />
-            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-500 pointer-events-none" />
-          </div>
-          <div className="pt-4 flex items-center justify-between">
-            <span className="font-label-sm text-label-sm uppercase tracking-wider text-text-tertiary">Founder & Group CEO</span>
-            <span className="font-body-md text-sm text-text-secondary">Office of the CEO</span>
-          </div>
-        </div> */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
+        {/* Visual panel — fills the empty side */}
+        <div className="lg:col-span-5 order-2 lg:order-1 group relative overflow-hidden rounded-2xl bg-surface-container border border-hairline min-h-[320px] lg:min-h-full">
+          <img
+            src={founderVisual}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover grayscale contrast-110 transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:contrast-100"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
 
-        {/* Letter Text Content */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="inline-block pb-2">
-            <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">Founder's Dispatch</span>
-            <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary font-medium tracking-tight mt-2">
-              "We run on uncomfortable truth and relentless execution."
-            </h2>
-            <div className="w-12 h-[3px] bg-primary mt-3"></div>
+          <div className="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm border border-white/40">
+            <span className="w-1.5 h-1.5 rounded-full bg-text-primary" />
+            <span className="text-[10px] font-semibold tracking-[0.14em] uppercase text-text-primary">
+              Founder&apos;s note
+            </span>
           </div>
 
-          <p className="font-body-lg text-body-lg text-text-secondary leading-relaxed">
-            Aproxio was created because we realized that the next century of enterprise cannot be built through bureaucratic hierarchy. It requires sovereign operating units that behave with the speed of an insurgent and the financial discipline of an enduring institution.
-          </p>
-
-          <p className="font-body-md text-body-md text-text-secondary leading-relaxed">
-            When you remove the comfort of corporate consensus, you force intellectual honesty. Every line of code, every warehouse design, every delivery routing decision is a direct consequence of clear personal responsibility.
-          </p>
-
-          <div className="pt-4 flex items-center gap-6">
-            <Link 
-              to="/culture" 
-              className="inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider hover:bg-neutral-800 transition-colors"
-            >
-              Read Institutional Ethos <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-            </Link>
-            <Link 
-              to="/investors" 
-              className="font-label-md text-label-md text-text-primary underline underline-offset-4 hover:text-text-secondary transition-colors"
-            >
-              View Shareholder Letters
-            </Link>
+          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
+            <p className="text-white text-lg sm:text-xl font-medium leading-snug tracking-tight">
+              Built for people who prefer truth over comfort.
+            </p>
+            <p className="mt-2 text-white/65 text-[12px] uppercase tracking-[0.16em]">
+              Chase the unexpected
+            </p>
           </div>
         </div>
 
+        {/* Copy + actions */}
+        <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col justify-center">
+          <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">
+            From the founder
+          </span>
+
+          <h2 className="mt-3 font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary font-medium tracking-tight max-w-xl">
+            Clarity over comfort.
+            <br className="hidden sm:block" />
+            Ownership over process.
+          </h2>
+          <div className="w-12 h-[3px] bg-[#3b82f6] mt-4" />
+
+          <blockquote className="mt-8 border-l-2 border-text-primary/20 pl-5">
+            <p className="font-body-lg text-body-lg text-text-secondary leading-relaxed">
+              Aproxio exists to build and grow products that people rely on —
+              with clear ownership, honest feedback, and teams trusted to decide.
+            </p>
+          </blockquote>
+
+          <p className="mt-5 font-body-md text-body-md text-text-secondary leading-relaxed max-w-xl">
+            Every product we launch should earn its place. When consensus is no substitute for truth,
+            each feature and release becomes someone&apos;s responsibility. That is how we ship, and how we endure.
+          </p>
+
+          <div className="mt-8 grid grid-cols-3 gap-4 max-w-md border-t border-hairline pt-6">
+            {[
+              { label: 'Principle', value: 'Ownership' },
+              { label: 'Pace', value: 'High agency' },
+              { label: 'Standard', value: 'Endure' },
+            ].map((item) => (
+              <div key={item.label}>
+                <span className="block text-[10px] uppercase tracking-[0.14em] text-text-tertiary">
+                  {item.label}
+                </span>
+                <span className="block mt-1.5 text-[14px] font-medium text-text-primary">
+                  {item.value}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            <Link
+              to="/culture"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+            >
+              Our culture
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </Link>
+            <Link
+              to="/careers"
+              className="inline-flex items-center gap-1.5 font-label-md text-label-md text-text-primary underline underline-offset-4 hover:text-text-secondary transition-colors"
+            >
+              Explore careers
+              <span className="material-symbols-outlined text-[16px]">north_east</span>
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

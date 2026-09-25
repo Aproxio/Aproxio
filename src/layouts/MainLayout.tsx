@@ -5,15 +5,35 @@ import Footer from '../components/Footer/Footer';
 import Scrollbar from '../components/Scrollbar/Scrollbar';
 
 const ScrollToTop: React.FC = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const scrollToHash = () => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return true;
+        }
+        return false;
+      };
+
+      if (scrollToHash()) return;
+
+      const timer = window.setTimeout(() => {
+        scrollToHash();
+      }, 120);
+
+      return () => window.clearTimeout(timer);
+    }
+
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: 'instant' as ScrollBehavior,
     });
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return null;
 };

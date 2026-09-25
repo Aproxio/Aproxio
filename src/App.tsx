@@ -6,9 +6,11 @@ import Loadable from './utils/LazyLoading';
 const HomePage = Loadable(lazy(() => import('./pages/HomePage')));
 const CulturePage = Loadable(lazy(() => import('./pages/CulturePage')));
 const CareersPage = Loadable(lazy(() => import('./pages/CareersPage')));
-const InvestorsPage = Loadable(lazy(() => import('./pages/InvestorsPage')));
+// const InvestorsPage = Loadable(lazy(() => import('./pages/InvestorsPage')));
 const ImpactPage = Loadable(lazy(() => import('./pages/ImpactPage')));
 const ContactPage = Loadable(lazy(() => import('./pages/ContactPage')));
+const PrivacyPolicyPage = Loadable(lazy(() => import('./pages/PrivacyPolicyPage')));
+const TermsPage = Loadable(lazy(() => import('./pages/TermsPage')));
 const NotFoundPage = Loadable(lazy(() => import('./pages/NotFoundPage')));
 
 const App: React.FC = () => {
@@ -21,9 +23,11 @@ const App: React.FC = () => {
         { path: 'home', element: <HomePage /> },
         { path: 'culture', element: <CulturePage /> },
         { path: 'careers', element: <CareersPage /> },
-        { path: 'investors', element: <InvestorsPage /> },
+        // { path: 'investors', element: <InvestorsPage /> },
         { path: 'impact', element: <ImpactPage /> },
         { path: 'contact', element: <ContactPage /> },
+        { path: 'privacy', element: <PrivacyPolicyPage /> },
+        { path: 'terms', element: <TermsPage /> },
         { path: '404', element: <NotFoundPage /> },
       ],
     },

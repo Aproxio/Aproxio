@@ -1,124 +1,181 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-interface Tenet {
+interface Principle {
   num: string;
   title: string;
   description: string;
 }
 
 const CultureSection: React.FC = () => {
-  const tenets: Tenet[] = [
+  const principles: Principle[] = [
     {
-      num: "01",
-      title: "Radical Transparency",
-      description: "Information does not bottleneck at executive levels. Dashboards, unit metrics, failure post-mortems, and customer escalations are broadcast group-wide."
+      num: '01',
+      title: 'Clarity first',
+      description:
+        'We share context early and often. Goals, metrics, and decisions are visible so teams can move without waiting for permission.',
     },
     {
-      num: "02",
-      title: "Speed as a Foundational Habit",
-      description: "Slowness is an institutional disease disguised as prudence. We prefer rapid, reversible decisions executed immediately over prolonged theoretical debates."
+      num: '02',
+      title: 'Own the outcome',
+      description:
+        'Responsibility does not stop at a job title. When something breaks, the person closest to it leads the fix through to resolution.',
     },
     {
-      num: "03",
-      title: "Intellectual Honesty over Consensus",
-      description: "Politeness that masks operational flaws is penalized. We encourage rigorous debate based on verified ground-truth data, regardless of hierarchy."
+      num: '03',
+      title: 'Bias to action',
+      description:
+        'We prefer small, reversible steps over long debates. Ship, learn, and improve — speed with judgment, not speed for its own sake.',
     },
     {
-      num: "04",
-      title: "Extreme Ownership Across Every Surface",
-      description: "No one says 'that is not my job'. When a delivery fails, a server hangs, or a supplier defaults, whoever discovers it owns the resolution end-to-end."
-    }
+      num: '04',
+      title: 'Honest feedback',
+      description:
+        'Respect includes telling the truth. We challenge ideas with data and care, regardless of hierarchy, so the work gets better.',
+    },
+  ];
+
+  const waysOfWorking = [
+    {
+      title: 'Product teams, clear ownership',
+      body: 'Compact groups with end-to-end responsibility for the products they build and run.',
+    },
+    {
+      title: 'Written over whispered',
+      body: 'Decisions and updates live in shared notes so context compounds across product teams.',
+    },
+    {
+      title: 'Standards over slogans',
+      body: 'We measure quality by what ships, what lasts, and how customers experience the product.',
+    },
   ];
 
   return (
     <div className="w-full">
-      {/* Ethos Header Section */}
-      <section className="pt-12 pb-20 border-b border-hairline relative">
-        <div className="flex items-center gap-space-sm mb-6">
-          <span className="w-2 h-2 bg-primary"></span>
-          <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">Institutional Ethos</span>
-          <span className="text-hairline-subtle font-body-md">/</span>
-          <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-primary">Culture</span>
+      {/* Header */}
+      <section className="pt-8 pb-16 lg:pt-10 lg:pb-20 border-b border-hairline">
+        <div className="flex items-center gap-2 mb-6">
+          <span className="w-2 h-2 bg-primary" />
+          <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">
+            Company
+          </span>
+          <span className="text-text-tertiary/40">/</span>
+          <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-primary">
+            Culture
+          </span>
         </div>
 
-        <h1 className="font-display text-display-mobile md:text-display text-text-primary tracking-tight font-semibold leading-[1.05] max-w-5xl mb-8">
-          Designed to make you feel uncomfortable.<br className="hidden md:inline" />
-          Built to endure.
+        <h1 className="font-display text-display-mobile md:text-display text-text-primary tracking-tight font-semibold leading-[1.05] max-w-4xl">
+          How we work together.
         </h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-4">
-          <div className="lg:col-span-7">
-            <p className="font-body-lg text-body-lg text-text-secondary leading-relaxed">
-              Aproxio does not build for comfort or conventional corporate equilibrium. We architect an ecosystem of high-velocity autonomy, radical transparency, and uncompromising personal agency. Excellence is an active discipline, not an accidental milestone.
-            </p>
-          </div>
-
-          <div className="lg:col-span-5 flex justify-start lg:justify-end">
-            <div className="p-4 bg-surface-muted border border-hairline max-w-sm flex items-center gap-4 hover:border-text-primary transition-all group cursor-pointer shadow-sm">
-              <div className="w-12 h-12 shrink-0 bg-surface-container overflow-hidden relative border border-hairline group-hover:border-text-primary transition-colors">
-                <img 
-                  className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-115 transition-all duration-500 ease-out" 
-                  alt="Founder Memo" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOZKW8M5k0UuTQUS35DbASz8dtqY0B9toqQbZZUU6imh6lR3IqPADo-lfeOXpu6KOvh85B_EZx-1gwavdZ-4ATBt4s_x6A3FfTPoMOSla9_yqBrilbk2JqSU5EVAxOsKufvfLdPVJMg7W-zf2HtJRiHn90-6VvZhVALy73Tmiq89sS7Ho6pRheafXWxMlgwzDZrgJGyWa7Etl0Wkgyr2r3_T0OSBDNb24I2aU6Wzg5xDCiIKAkfhot"
-                />
-              </div>
-              <div>
-                <p className="font-label-md text-label-md text-text-primary font-medium">A note on cultural friction</p>
-                <a href="#memo" className="font-body-md text-sm text-text-secondary hover:text-text-primary flex items-center gap-1 mt-0.5">
-                  Read Founder's Memo <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="mt-6 max-w-2xl font-body-lg text-body-lg text-text-secondary leading-relaxed">
+          We build products. Culture is how we do that well — small teams, visible decisions,
+          and a high bar for quality so every business under Aproxio can grow with trust.
+        </p>
       </section>
 
-      {/* Tenets Grid */}
-      <section className="py-20 border-b border-hairline">
-        <div className="inline-block pb-2 mb-10">
-          <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">Core Principles</span>
+      {/* Principles */}
+      <section className="py-16 lg:py-20 border-b border-hairline">
+        <div className="mb-10">
+          <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">
+            Principles
+          </span>
           <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary font-medium tracking-tight mt-2">
-            The Non-Negotiable Tenets
+            What we expect of each other
           </h2>
-          <div className="w-12 h-[3px] bg-primary mt-3"></div>
+          <div className="w-12 h-[3px] bg-[#3b82f6] mt-3" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {tenets.map((tenet) => (
-            <div 
-              key={tenet.num} 
-              className="p-8 border border-hairline bg-surface-muted hover:bg-canvas hover:border-text-primary transition-all group"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {principles.map((item) => (
+            <div
+              key={item.num}
+              className="p-7 sm:p-8 border border-hairline bg-surface-muted hover:border-text-primary/40 transition-colors"
             >
-              <span className="font-headline-sm text-headline-sm text-text-tertiary group-hover:text-text-primary transition-colors font-mono">
-                {tenet.num}
+              <span className="font-mono text-[13px] text-text-tertiary tracking-wider">
+                {item.num}
               </span>
-              <h3 className="font-title text-2xl font-medium text-text-primary mt-4 mb-3 tracking-tight">
-                {tenet.title}
+              <h3 className="mt-3 text-xl sm:text-2xl font-medium text-text-primary tracking-tight">
+                {item.title}
               </h3>
-              <p className="font-body-md text-body-md text-text-secondary leading-relaxed">
-                {tenet.description}
+              <p className="mt-3 font-body-md text-body-md text-text-secondary leading-relaxed">
+                {item.description}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Founder's Memo Section */}
-      <section className="py-20" id="memo">
-        <div className="max-w-3xl space-y-6">
-          <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">Founder's Memo</span>
-          <h2 className="font-headline-lg text-3xl md:text-4xl text-text-primary font-medium tracking-tight">
-            On Friction and High Performance
-          </h2>
-          <p className="font-body-lg text-body-lg text-text-secondary leading-relaxed">
-            "When people join Aproxio, their first three months are usually marked by cognitive dissonance. They expect polite corporate alignments and multiple layers of sign-offs. Instead, they are handed complete sovereignty and asked why a feature is not live today."
-          </p>
-          <p className="font-body-md text-body-md text-text-secondary leading-relaxed">
-            "We do not promise peace of mind. We promise that you will do the most concentrated, consequential, and intellectually rewarding work of your life. If you thrive under extreme agency, you have found your home."
-          </p>
-          <div className="pt-4 flex items-center gap-4">
-            <span className="font-label-md font-semibold text-text-primary uppercase tracking-wider">— Founder & Group CEO</span>
-            <span className="text-text-tertiary text-sm">Aproxio Executive Office</span>
+      {/* Ways of working — generic visual, no personal identity */}
+      <section className="py-16 lg:py-20 border-b border-hairline">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="lg:col-span-5 group relative overflow-hidden rounded-2xl border border-hairline bg-surface-container min-h-[280px] lg:min-h-[360px]">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover grayscale contrast-110 transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:contrast-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5">
+              <p className="text-white text-sm font-medium tracking-wide">
+                Spaces designed for focused work — not performance theater.
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7">
+            <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">
+              Ways of working
+            </span>
+            <h2 className="mt-2 font-headline-md text-headline-md text-text-primary font-medium tracking-tight max-w-lg">
+              Practical habits, not corporate slogans.
+            </h2>
+            <div className="w-12 h-[3px] bg-[#3b82f6] mt-3" />
+
+            <ul className="mt-8 space-y-6">
+              {waysOfWorking.map((item) => (
+                <li key={item.title} className="border-t border-hairline pt-5">
+                  <h3 className="text-[16px] font-medium text-text-primary">{item.title}</h3>
+                  <p className="mt-1.5 font-body-md text-body-md text-text-secondary leading-relaxed">
+                    {item.body}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 lg:py-20">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div className="max-w-xl">
+            <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">
+              Join us
+            </span>
+            <h2 className="mt-2 font-headline-md text-headline-md text-text-primary font-medium tracking-tight">
+              Looking for people who love building products.
+            </h2>
+            <p className="mt-4 font-body-md text-body-md text-text-secondary leading-relaxed">
+              If you value ownership, honest feedback, and shipping products customers trust —
+              we would like to hear from you.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+            <Link
+              to="/careers"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+            >
+              View careers
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-hairline text-text-primary font-label-md text-label-md uppercase tracking-wider hover:border-text-primary transition-colors"
+            >
+              Get in touch
+            </Link>
           </div>
         </div>
       </section>
