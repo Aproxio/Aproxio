@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                   onClick={goToBusinesses}
                   className="hover:text-text-primary transition-colors capitalize cursor-pointer"
                 >
-                  Aproxio
+                  Mbito
                 </a>
               </li>
             </ul>

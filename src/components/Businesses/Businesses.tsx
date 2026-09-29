@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import businessVisual from '../../images/aproxio-business-card.jpg';
+import businessVisual from '../../images/Mbito.svg';
 
 const Businesses: React.FC = () => {
   const cardRef = useRef<HTMLAnchorElement>(null);
@@ -89,7 +89,7 @@ const Businesses: React.FC = () => {
           </p>
 
           <h3 className="text-[36px] sm:text-[52px] lg:text-[56px] font-semibold tracking-tight leading-[0.95] capitalize text-text-primary">
-            aproxio
+            Mbito
           </h3>
 
           <p className="mt-5 text-[18px] sm:text-[20px] font-light text-text-primary leading-snug max-w-md">
