@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-14 pb-10 lg:pt-16 lg:pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
           {/* Brand */}
-          <div className="md:col-span-5 lg:col-span-5">
+          <div className="md:col-span-6 lg:col-span-6">
             <Link to="/" className="inline-block select-none">
               <img
                 src={aproxioLogo}
@@ -42,9 +42,6 @@ const Footer: React.FC = () => {
             <p className="mt-5 max-w-sm font-body-md text-[14px] text-text-secondary leading-relaxed">
               Building products that endure — under one home called Aproxio.
             </p>
-            {/* <p className="mt-4 font-mono text-[11px] tracking-wider uppercase text-text-tertiary">
-              Gurugram · Bengaluru · New Delhi
-            </p> */}
           </div>
 
           {/* Businesses */}
@@ -65,8 +62,8 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Company — live routes only */}
-          <div className="md:col-span-3 lg:col-span-3">
+          {/* Company */}
+          <div className="md:col-span-2 lg:col-span-2">
             <h3 className="text-[13px] font-semibold text-text-primary mb-4 tracking-wide uppercase">
               Company
             </h3>
@@ -81,15 +78,10 @@ const Footer: React.FC = () => {
                   Careers
                 </Link>
               </li>
-              {/* <li>
-                <Link to="/impact" className="hover:text-text-primary transition-colors">
-                  Impact
-                </Link>
-              </li> */}
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Connect */}
           <div className="md:col-span-2 lg:col-span-2">
             <h3 className="text-[13px] font-semibold text-text-primary mb-4 tracking-wide uppercase">
               Connect
