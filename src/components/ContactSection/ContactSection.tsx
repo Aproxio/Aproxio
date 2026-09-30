@@ -195,7 +195,7 @@ const ContactSection: React.FC = () => {
               href="tel:+919592850867"
               className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1"
             >
-              +91 95928 50867
+              +91 8847696962
             </a>
           </div>
           <p className="mt-10 font-body-lg text-text-secondary max-w-xl mx-auto leading-relaxed">

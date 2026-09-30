@@ -147,7 +147,7 @@ const CareersSection: React.FC = () => {
             <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary font-medium tracking-tight mt-2">
               Current openings
             </h2>
-            <div className="w-12 h-[3px] bg-[#3b82f6] mt-3" />
+            <div className="w-12 h-[3px] bg-text-primary rounded-full mt-3" />
           </div>
           <span className="font-body-md text-[14px] text-text-tertiary">
             0 roles · {activeLabel}
@@ -169,10 +169,10 @@ const CareersSection: React.FC = () => {
                 type="button"
                 aria-selected={active}
                 onClick={() => setSelectedDept(cat.id)}
-                className={`px-4 py-2.5 font-label-md text-[12px] uppercase tracking-wider transition-colors cursor-pointer border ${
+                className={`px-4 py-2.5 font-label-md text-[12px] uppercase tracking-wider rounded-lg transition-all duration-200 cursor-pointer border ${
                   active
-                    ? 'bg-text-primary text-canvas border-text-primary'
-                    : 'bg-transparent text-text-secondary border-hairline hover:text-text-primary hover:border-text-primary/40'
+                    ? 'bg-text-primary text-canvas border-text-primary shadow-xs'
+                    : 'bg-transparent text-text-secondary border-stone-300 hover:text-text-primary hover:border-text-primary'
                 }`}
               >
                 {cat.label}
@@ -232,7 +232,7 @@ const CareersSection: React.FC = () => {
             <h2 className="mt-2 font-headline-md text-headline-md text-text-primary font-medium tracking-tight">
               What we look for
             </h2>
-            <div className="w-12 h-[3px] bg-[#3b82f6] mt-3" />
+            <div className="w-12 h-[3px] bg-text-primary rounded-full mt-3" />
           </div>
 
           <ul className="lg:col-span-7 space-y-6">

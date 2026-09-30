@@ -137,14 +137,14 @@ const Hero: React.FC = () => {
             <a
               href="#projects"
               onClick={scrollToProjects}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider hover:bg-neutral-800 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text-primary"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider rounded-lg hover:bg-neutral-800 transition-all duration-200 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text-primary"
             >
               Explore businesses
               <span className="material-symbols-outlined text-[18px]">arrow_downward</span>
             </a>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-hairline bg-transparent text-text-primary font-label-md text-label-md uppercase tracking-wider hover:border-text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text-primary"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-stone-300 bg-surface/60 text-text-primary font-label-md text-label-md uppercase tracking-wider rounded-lg hover:border-text-primary hover:bg-stone-100/70 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text-primary"
             >
               Get in touch
             </Link>

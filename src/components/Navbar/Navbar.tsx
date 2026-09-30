@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
                 >
                   {item.label}
                   {active && (
-                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#3b82f6] rounded-full" />
+                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-text-primary rounded-full" />
                   )}
                 </Link>
               );

@@ -177,7 +177,7 @@ const CultureSection: React.FC = () => {
           <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary font-medium tracking-tight mt-2">
             What we expect of each other
           </h2>
-          <div className="w-12 h-[3px] bg-[#3b82f6] mt-3" />
+          <div className="w-12 h-[3px] bg-text-primary rounded-full mt-3" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -224,7 +224,7 @@ const CultureSection: React.FC = () => {
             <h2 className="mt-2 font-headline-md text-headline-md text-text-primary font-medium tracking-tight max-w-lg">
               Practical habits, not corporate slogans.
             </h2>
-            <div className="w-12 h-[3px] bg-[#3b82f6] mt-3" />
+            <div className="w-12 h-[3px] bg-text-primary rounded-full mt-3" />
 
             <ul className="mt-8 space-y-6">
               {waysOfWorking.map((item) => (
@@ -258,14 +258,14 @@ const CultureSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
             <Link
               to="/careers"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider rounded-lg hover:bg-neutral-800 transition-all duration-200 shadow-sm"
             >
               View careers
               <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-hairline text-text-primary font-label-md text-label-md uppercase tracking-wider hover:border-text-primary transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-stone-300 bg-surface/60 text-text-primary font-label-md text-label-md uppercase tracking-wider rounded-lg hover:border-text-primary hover:bg-stone-100/70 transition-all duration-200"
             >
               Get in touch
             </Link>

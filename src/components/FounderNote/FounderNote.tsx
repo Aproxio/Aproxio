@@ -43,7 +43,7 @@ const FounderNote: React.FC = () => {
             <br className="hidden sm:block" />
             Ownership over process.
           </h2>
-          <div className="w-12 h-[3px] bg-[#3b82f6] mt-4" />
+          <div className="w-12 h-[3px] bg-text-primary rounded-full mt-4" />
 
           <blockquote className="mt-8 border-l-2 border-text-primary/20 pl-5">
             <p className="font-body-lg text-body-lg text-text-secondary leading-relaxed">
@@ -77,7 +77,7 @@ const FounderNote: React.FC = () => {
           <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
             <Link
               to="/culture"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider rounded-lg hover:bg-neutral-800 transition-all duration-200 shadow-sm"
             >
               Our culture
               <span className="material-symbols-outlined text-[16px]">arrow_forward</span>

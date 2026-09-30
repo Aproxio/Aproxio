@@ -23,7 +23,7 @@ const Businesses: React.FC = () => {
         <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-medium text-text-primary tracking-tight">
           Our businesses
         </h2>
-        <div className="w-12 h-[3px] bg-[#3b82f6] mt-3" />
+        <div className="w-12 h-[3px] bg-text-primary rounded-full mt-3" />
         <p className="font-body-lg text-body-lg text-text-secondary leading-relaxed mt-5">
           Each product under Aproxio stands on its own — built to serve real customers,
           earn trust, and grow into something lasting. More will join over time.
@@ -118,7 +118,7 @@ const Businesses: React.FC = () => {
             ))}
           </div>
 
-          <span className="mt-9 inline-flex w-fit items-center gap-2.5 px-5 py-2.5 bg-text-primary text-canvas text-[13px] font-semibold tracking-wide uppercase transition-all duration-300 group-hover:gap-3.5 hover:bg-neutral-800">
+          <span className="mt-9 inline-flex w-fit items-center gap-2.5 px-5 py-2.5 bg-text-primary text-canvas text-[13px] font-semibold tracking-wide uppercase rounded-lg transition-all duration-300 group-hover:gap-3.5 hover:bg-neutral-800 shadow-sm">
             Learn more
             <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
           </span>
