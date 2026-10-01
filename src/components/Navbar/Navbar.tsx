@@ -13,6 +13,7 @@ const Navbar: React.FC = () => {
 
   const navItems: NavItem[] = [
     { label: 'Home', path: '/' },
+    { label: 'Businesses', path: '/businesses' },
     { label: 'Culture', path: '/culture' },
     { label: 'Careers', path: '/careers' },
     // { label: 'Investors', path: '/investors' },

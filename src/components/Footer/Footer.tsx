@@ -6,25 +6,6 @@ const Footer: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const goToBusinesses = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const scrollToSection = () => {
-      const target =
-        document.getElementById('projects') || document.getElementById('businesses');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return true;
-      }
-      return false;
-    };
-
-    if (location.pathname === '/' || location.pathname === '/home') {
-      scrollToSection();
-      return;
-    }
-
-    navigate('/#projects');
-  };
 
   return (
     <footer className="w-full bg-surface-muted border-t border-hairline mt-16 lg:mt-24">
@@ -51,13 +32,12 @@ const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-3 text-[15px] text-text-secondary">
               <li>
-                <a
-                  href="/#projects"
-                  onClick={goToBusinesses}
+                <Link
+                  to="/businesses"
                   className="hover:text-text-primary transition-colors capitalize cursor-pointer"
                 >
-                  Mbito
-                </a>
+                  Explore Businesses
+                </Link>
               </li>
             </ul>
           </div>

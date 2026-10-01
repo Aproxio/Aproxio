@@ -4,6 +4,7 @@ import MainLayout from './layouts/MainLayout';
 import Loadable from './utils/LazyLoading';
 
 const HomePage = Loadable(lazy(() => import('./pages/HomePage')));
+const OurBusinessesPage = Loadable(lazy(() => import('./pages/OurBusinessesPage')));
 const CulturePage = Loadable(lazy(() => import('./pages/CulturePage')));
 const CareersPage = Loadable(lazy(() => import('./pages/CareersPage')));
 // const InvestorsPage = Loadable(lazy(() => import('./pages/InvestorsPage')));
@@ -21,6 +22,7 @@ const App: React.FC = () => {
       children: [
         { element: <HomePage />, index: true },
         { path: 'home', element: <HomePage /> },
+        { path: 'businesses', element: <OurBusinessesPage /> },
         { path: 'culture', element: <CulturePage /> },
         { path: 'careers', element: <CareersPage /> },
         // { path: 'investors', element: <InvestorsPage /> },

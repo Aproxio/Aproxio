@@ -72,13 +72,6 @@ const Hero: React.FC = () => {
     return () => clearInterval(interval);
   }, [isUserInteracting]);
 
-  const scrollToProjects = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const target = document.getElementById('projects') || document.getElementById('businesses');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <section
@@ -134,14 +127,13 @@ const Hero: React.FC = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
-            <a
-              href="#projects"
-              onClick={scrollToProjects}
+            <Link
+              to="/businesses"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider rounded-lg hover:bg-neutral-800 transition-all duration-200 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text-primary"
             >
               Explore businesses
-              <span className="material-symbols-outlined text-[18px]">arrow_downward</span>
-            </a>
+              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </Link>
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-stone-300 bg-surface/60 text-text-primary font-label-md text-label-md uppercase tracking-wider rounded-lg hover:border-text-primary hover:bg-stone-100/70 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text-primary"
