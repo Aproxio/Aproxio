@@ -27,15 +27,7 @@ const Businesses: React.FC = () => {
             </span>
           </div>
 
-          {/* Bottom left text */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 z-10">
-            <p className="text-white text-lg sm:text-xl font-medium leading-snug tracking-tight">
-              Aproxio's first launch.
-            </p>
-            <p className="mt-2 text-white/65 text-[12px] uppercase tracking-[0.16em]">
-              Chase the unexpected
-            </p>
-          </div>
+
         </div>
 
         {/* Content side */}
