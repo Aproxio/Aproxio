@@ -1,12 +1,8 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import aproxioLogo from '../../images/aproxio-logo.png';
 
 const Footer: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-
   return (
     <footer className="w-full bg-surface-muted border-t border-hairline mt-16 lg:mt-24">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-14 pb-10 lg:pt-16 lg:pb-12">
