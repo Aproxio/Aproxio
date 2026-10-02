@@ -5,7 +5,7 @@ import aproxioLogo from '../../images/aproxio-logo.png';
 const Footer: React.FC = () => {
   return (
     <footer className="w-full bg-surface-muted border-t border-hairline mt-16 lg:mt-24">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-14 pb-10 lg:pt-16 lg:pb-12">
+      <div className="page-frame pt-14 pb-10 lg:pt-16 lg:pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
           {/* Brand */}
           <div className="md:col-span-6 lg:col-span-6">
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
                   to="/businesses"
                   className="hover:text-text-primary transition-colors capitalize cursor-pointer"
                 >
-                  Explore Businesses
+                  Mbito
                 </Link>
               </li>
             </ul>

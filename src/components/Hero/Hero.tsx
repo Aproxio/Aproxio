@@ -93,9 +93,9 @@ const Hero: React.FC = () => {
       <div className="grid_bg" />
       <div ref={overlayRef} className="overlay" />
 
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="page-frame relative z-10">
         <div
-          className={`pt-4 sm:pt-14 lg:pt-20 max-w-4xl transition-all duration-700 ease-out ${
+          className={`max-w-3xl pt-8 sm:pt-14 lg:pt-16 transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
@@ -103,11 +103,11 @@ const Hero: React.FC = () => {
             Our businesses
           </p>
 
-          <h1 className="font-display text-[40px] sm:text-[64px] md:text-[72px] xl:text-[80px] font-semibold leading-[0.98] tracking-tight text-text-primary">
+          <h1 className="font-display text-[2.75rem] sm:text-6xl lg:text-7xl font-semibold leading-[0.98] tracking-tight text-text-primary">
             Aproxio
           </h1>
 
-          <p className="mt-4 sm:mt-6 text-[22px] sm:text-[34px] md:text-[40px] font-light leading-[1.15] tracking-tight text-text-primary max-w-3xl">
+          <p className="mt-5 sm:mt-6 text-[1.35rem] sm:text-3xl lg:text-4xl font-light leading-[1.15] tracking-tight text-text-primary">
             Building products that endure.
             <br />
             Chase the unexpected.
@@ -123,7 +123,7 @@ const Hero: React.FC = () => {
           </p>
 
           <div
-            className={`mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-center gap-4 transition-all duration-700 delay-300 ease-out ${
+            className={`mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-center gap-3 transition-all duration-700 delay-300 ease-out ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >

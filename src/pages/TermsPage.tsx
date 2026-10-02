@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const TermsPage: React.FC = () => {
   return (
     <main className="w-full bg-canvas min-h-screen">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-8 pb-16 lg:pt-10 lg:pb-24">
+      <div className="page-frame pt-8 pb-16 lg:pt-10 lg:pb-24">
         <div className="max-w-3xl">
           <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">
             Legal

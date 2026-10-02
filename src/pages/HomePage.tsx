@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
     <main className="w-full bg-canvas min-h-screen">
       <Hero />
 
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="page-frame">
         <Businesses />
         <FounderNote />
       </div>

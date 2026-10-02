@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
           hidden && !mobileMenuOpen ? '-translate-y-full' : 'translate-y-0'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 h-20 flex items-center justify-between">
+        <div className="page-frame h-20 flex items-center justify-between">
           
           {/* Aproxio Logo */}
           <Link to="/" className="flex items-center select-none group">

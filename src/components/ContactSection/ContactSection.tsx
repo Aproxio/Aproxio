@@ -138,7 +138,7 @@ const ContactSection: React.FC = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative overflow-hidden pt-8 pb-12 sm:pt-12 sm:pb-16 md:min-h-[calc(100dvh-5rem)] md:flex md:flex-col md:justify-center border-b border-hairline select-none"
+        className="relative overflow-hidden pt-12 pb-14 sm:pt-16 sm:pb-20 border-b border-hairline select-none"
       >
         {/* Background Interactive Square Grid */}
         <div className="grid_bg"></div>
@@ -147,7 +147,7 @@ const ContactSection: React.FC = () => {
         <div ref={overlayRef} className="overlay"></div>
 
         {/* Header Content */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="page-frame relative z-10">
         <div className="flex items-center gap-space-sm mb-6">
           <span className="w-2 h-2 bg-primary"></span>
           <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">Direct Dispatches</span>
@@ -156,27 +156,26 @@ const ContactSection: React.FC = () => {
         </div>
 
         <div
-          className={`transition-all duration-700 ease-out ${
+          className={`max-w-3xl transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          <h1 className="font-display text-display-mobile md:text-display text-text-primary tracking-tight font-semibold leading-[1.05] max-w-5xl mb-6">
+          <h1 className="font-display text-display-mobile md:text-display text-text-primary font-semibold">
             Get in touch with<br />
             Aproxio leadership.
           </h1>
+          <p
+            className={`mt-5 max-w-xl font-body-lg text-body-lg text-text-secondary leading-relaxed transition-all duration-700 delay-150 ease-out ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            To chase the unexpected
+          </p>
         </div>
-
-        <p
-          className={`font-body-lg text-body-lg text-text-secondary max-w-3xl leading-relaxed transition-all duration-700 delay-150 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-        >
-          To chase the unexpected
-        </p>
         </div>
       </section>
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="page-frame">
         {/* Main Grid: Form + Office Details */}
         <section className="py-16 sm:py-24 md:py-32 flex flex-col items-center justify-center text-center">
           <p className="font-label-sm text-sm uppercase tracking-[0.2em] text-text-tertiary mb-6">
@@ -187,13 +186,13 @@ const ContactSection: React.FC = () => {
               href="https://mail.google.com/mail/?view=cm&fs=1&to=founder.aproxio@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-display text-lg sm:text-3xl md:text-4xl lg:text-5xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1 break-all sm:break-normal"
+              className="font-display text-2xl sm:text-4xl lg:text-5xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1 break-all sm:break-normal"
             >
               founder.aproxio@gmail.com
             </a>
             <a 
               href="tel:+919592850867"
-              className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1"
+              className="font-display text-xl sm:text-3xl lg:text-4xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1"
             >
               +91 8847696962
             </a>

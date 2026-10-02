@@ -101,7 +101,7 @@ const ImpactSection: React.FC = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative overflow-hidden pt-8 pb-12 sm:pt-12 sm:pb-16 md:min-h-[calc(100dvh-5rem)] md:flex md:flex-col md:justify-center border-b border-hairline select-none"
+        className="relative overflow-hidden pt-12 pb-14 sm:pt-16 sm:pb-20 border-b border-hairline select-none"
       >
         {/* Background Interactive Square Grid */}
         <div className="grid_bg"></div>
@@ -110,7 +110,7 @@ const ImpactSection: React.FC = () => {
         <div ref={overlayRef} className="overlay"></div>
 
         {/* Header Content */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="page-frame relative z-10">
           <div className="flex items-center gap-space-sm mb-6">
             <span className="w-2 h-2 bg-primary"></span>
             <span className="font-label-sm text-label-sm uppercase tracking-widest text-text-tertiary">Sustainability & ESG</span>
@@ -123,7 +123,7 @@ const ImpactSection: React.FC = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
           >
-            <h1 className="font-display text-display-mobile md:text-display text-text-primary tracking-tight font-semibold leading-[1.05] max-w-5xl mb-6">
+            <h1 className="font-display text-display-mobile md:text-display text-text-primary font-semibold max-w-4xl mb-6">
               Our impact beyond business.<br />
               Built for regeneration.
             </h1>
@@ -139,7 +139,7 @@ const ImpactSection: React.FC = () => {
         </div>
       </section>
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="page-frame">
         {/* Hero Dual Photo Impact Banner */}
         <section className="py-16 border-b border-hairline">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">

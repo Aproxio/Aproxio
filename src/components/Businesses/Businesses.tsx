@@ -69,7 +69,7 @@ const Businesses: React.FC = () => {
 
           <div className="mt-9 flex items-center">
             <Link
-              to="/contact"
+              to="/businesses"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-text-primary text-canvas font-label-md text-label-md uppercase tracking-wider rounded-lg hover:bg-neutral-800 transition-all duration-200 shadow-sm"
             >
               Learn more
