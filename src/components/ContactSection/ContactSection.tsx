@@ -183,12 +183,12 @@ const ContactSection: React.FC = () => {
           </p>
           <div className="flex flex-col items-center gap-2 sm:gap-3 w-full max-w-full">
             <a 
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=founder.aproxio@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=info@aproxio.in"
               target="_blank"
               rel="noopener noreferrer"
               className="font-display text-2xl sm:text-4xl lg:text-5xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1 break-all sm:break-normal"
             >
-              founder.aproxio@gmail.com
+              info@aproxio.in
             </a>
             <a 
               href="tel:+919592850867"
