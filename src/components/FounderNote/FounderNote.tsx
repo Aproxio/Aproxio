@@ -52,7 +52,7 @@ const FounderNote: React.FC = () => {
             </p>
           </blockquote>
 
-          <p className="mt-5 font-body-md text-body-md text-text-secondary leading-relaxed max-w-xl">
+          <p className="mt-5 font-body-lg text-body-lg text-text-secondary leading-relaxed max-w-xl">
             Every product we launch should earn its place. When consensus is no substitute for truth,
             each feature and release becomes someone&apos;s responsibility. That is how we ship, and how we endure.
           </p>

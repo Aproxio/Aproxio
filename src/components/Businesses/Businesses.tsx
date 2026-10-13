@@ -45,7 +45,7 @@ const Businesses: React.FC = () => {
             Our first product — more to come
           </p>
 
-          <p className="mt-4 font-body-md text-body-md text-text-secondary leading-relaxed max-w-xl">
+          <p className="mt-4 font-body-lg text-body-lg text-text-secondary leading-relaxed max-w-xl">
             The first business under the Aproxio umbrella. Built for everyday usefulness,
             reliability, and a standard we will carry into every product we launch next.
           </p>

@@ -17,6 +17,21 @@ const ContactSection: React.FC = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const [isUserInteracting, setIsUserInteracting] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgentMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const screenMobile = window.innerWidth <= 768;
+      setIsMobile(userAgentMobile || screenMobile);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => setIsVisible(true));
@@ -183,15 +198,15 @@ const ContactSection: React.FC = () => {
           </p>
           <div className="flex flex-col items-center gap-2 sm:gap-3 w-full max-w-full">
             <a 
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=info@aproxio.in"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={isMobile ? "mailto:info@aproxio.in" : "https://mail.google.com/mail/?view=cm&fs=1&to=info@aproxio.in"}
+              target={isMobile ? undefined : "_blank"}
+              rel={isMobile ? undefined : "noopener noreferrer"}
               className="font-display text-2xl sm:text-4xl lg:text-5xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1 break-all sm:break-normal"
             >
               info@aproxio.in
             </a>
             <a 
-              href="tel:+919592850867"
+              href="tel:+918847696962"
               className="font-display text-xl sm:text-3xl lg:text-4xl text-text-primary hover:text-text-secondary transition-colors duration-300 border-b border-transparent hover:border-text-secondary pb-1"
             >
               +91 8847696962
